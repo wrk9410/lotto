@@ -2,6 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -9,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import javax.swing.JPasswordField;
 
-public class Main2 extends JFrame {
+public class Main2 extends JDialog {
 	private JTextField id_tf;
 	private JPasswordField pass_tf;
 	private JPasswordField passcheck_tf;
