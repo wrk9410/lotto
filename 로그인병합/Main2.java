@@ -18,8 +18,7 @@ public class Main2 extends JDialog {
 	
 	
 	public Main2() {
-		Main main = new Main();
-		map = main.getMap();
+		map = Main.getMap();
 		getContentPane().setForeground(Color.WHITE);
 		getContentPane().setBackground(Color.WHITE);
 		getContentPane().setLayout(null);
@@ -31,6 +30,7 @@ public class Main2 extends JDialog {
 		// 비밀번호 입력
 		JLabel pass_reg = new JLabel("비밀번호 ");
 		pass_reg.setBounds(79, 109, 57, 15);
+		getContentPane().add(pass_reg);
 		// 입력 비밀번호 동일 확인
 		JLabel pass_check = new JLabel("비밀번호 확인 ");
 		pass_check.setBounds(79, 157, 97, 15);
@@ -63,7 +63,10 @@ public class Main2 extends JDialog {
 				if (!id_tf.getText().equals("") && !pass_tf.getText().equals("")
 						&& !passcheck_tf.getText().equals("")) {
 					if (map.containsKey(id_tf.getText())) { // 중복 아이디 확인
-						System.out.println("중복된 아이디 입니다.");
+						JOptionPane.showMessageDialog(Main2.this, "중복된 아이디 입니다");
+						id_tf.setText("");
+						pass_tf.setText("");
+						passcheck_tf.setText("");
 					} else if (pass_tf.getText().equals(passcheck_tf.getText())) { // 중복 아닐 경우 진행
 						if (4 <= pass_tf.getText().length() && pass_tf.getText().length() <= 12) { // 4자리 이상 12자리 이하 확인 조건
 							map.put(id_tf.getText(), pass_tf.getText()); // 중복 아이디가 아닐 경우 key는 id, value는 pass 저장
@@ -72,7 +75,7 @@ public class Main2 extends JDialog {
 							pass_tf.setText("");
 							passcheck_tf.setText("");
 							JOptionPane.showMessageDialog(Main2.this, "회원가입 완료!");
-							main.setMap(map);
+							Main.setMap(map);
 						} else {
 							JOptionPane.showMessageDialog(Main2.this, "비밀번호 4자 이상, 12자 이하를 입력해주세요.");
 						}
@@ -98,10 +101,7 @@ public class Main2 extends JDialog {
 
 		setSize(500, 350);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		setVisible(true);
 
-	}
-
-	public static void main(String[] args) {
-		new Main2().setVisible(true);
 	}
 }

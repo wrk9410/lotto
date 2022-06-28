@@ -18,14 +18,13 @@ import javax.swing.JOptionPane;
 public class Main extends JFrame {
 	private JTextField tf;
 	private JPasswordField pf;
-	private HashMap<String, String> map = new HashMap<>();
+	static private HashMap<String, String> map = new HashMap<>();
 	
-	public HashMap getMap() {
+	static public HashMap getMap() {
 		return map;
 	}
-	
-	public void setMap(HashMap a) {
-		map.putAll(a);
+	static public void setMap(HashMap a) {
+		map = a;
 	}
 	
 	public Main() {
@@ -67,8 +66,12 @@ public class Main extends JFrame {
 					JOptionPane.showMessageDialog(Main.this, "로그인에 성공하셨습니다."); 
 					Main1 m = new Main1(); //효정이 만든 게임창 오픈
 					m.setVisible(true);
+					tf.setText(""); //안내창 떴으면 로그인란 빈칸으로 초기화
+					pf.setText("");
 				} else {
 					JOptionPane.showMessageDialog(Main.this, "로그인에 실패하셨습니다.");
+					tf.setText(""); //안내창 떴으면 로그인란 빈칸으로 초기화
+					pf.setText("");
 				}
 			}
 		});
